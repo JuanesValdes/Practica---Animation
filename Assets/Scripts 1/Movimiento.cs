@@ -6,7 +6,9 @@ public class Movimiento : MonoBehaviour
 {
     [Header("Aqui va tu objeto vacio model")]
     public GameObject model;
+    public string[] tipoAtaque;
 
+    int contador = 0;
 
     float velocidad;
     Animator anim;
@@ -17,6 +19,7 @@ public class Movimiento : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        contador = 0;
         anim = GetComponent<Animator>();
         velocidad = 6;
         velocidadLateral = 6;
@@ -26,9 +29,22 @@ public class Movimiento : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ControlMovimiento();
-        Ataque();
+        if (Input.GetMouseButtonDown(0))
+        {
+         
 
+            if(contador>= 3)
+            {
+                contador = 0;
+            }
+            contador++;
+        }
+
+
+        ControlMovimiento();
+         //Ataque(tipoAtaque[contador]);
+         //CambioAtaque();
+        Ataque(contador,"contador");
 
     } //Fin de Update;
         void ControlMovimiento()
@@ -67,20 +83,64 @@ public class Movimiento : MonoBehaviour
 
         }
 
-    void Ataque()
+    //void Ataque()
+    //{
+    //    if(Input.GetMouseButtonDown(0))
+    //    {
+    //        anim.SetBool("Ataque",true);
+    //    }
+
+    //    else
+    //    {
+    //        anim.SetBool("Ataque", false);
+    //    }
+
+    //}
+
+
+    void Ataque(string tipoAtaque)
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            anim.SetBool("Ataque",true);
+            //comboAtaque();
+            anim.SetBool(tipoAtaque, true);
         }
 
         else
         {
-            anim.SetBool("Ataque", false);
+            anim.SetBool(tipoAtaque, false);
         }
 
     }
+    void Ataque (int contador, string contadorText)
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            
+            anim.SetInteger(contadorText, contador);
+           
+        }
+    }
 
+    void CambioAtaque()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            contador++;
+            if (contador > tipoAtaque.Length-1)
+            {
+                contador = 0;
+            }
+        }
+    }
 
+    void comboAtaque()
+    {
+        contador++;
+        if (contador > tipoAtaque.Length - 1)
+       {
+           contador = 0;
+       }
+    }
 }
 
