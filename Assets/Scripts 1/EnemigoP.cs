@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemigoP : Persecucion
 {
-    // Start is called before the first frame update
+    // el hijo del script persecución, sirve para dar diferentes atributos si asi lo deseamos a diferentes objetos pero que al llamar el código pers, hace la misma función sin necesidad de otro código
     void Start()
     {
         playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();

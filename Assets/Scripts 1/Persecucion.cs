@@ -7,7 +7,8 @@ public class Persecucion : MonoBehaviour
     public Transform playerPosition;
     public float velocidadEnemigo;
 
-    // Start is called before the first frame update
+    // Con playerposition delimitamos la posición del objeto con el tag player para que nuestro enemigo pueda transformar su posición hacia el player
+
     void Start()
     {
         playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -19,6 +20,7 @@ public class Persecucion : MonoBehaviour
         //Perseguir(playerPosition,this.gameObject.transform);
     }
 
+    // seleccionamos el player como objetivo y hacemos que el enemigo se dirija a su posición
     public void Perseguir (Transform player, Transform enemigo)
     {
         Vector3 distancia = player.position - enemigo.position;
