@@ -9,7 +9,7 @@ public class Barras : MonoBehaviour
     public int vida;
     CEnemigo vidaEnemigo;
 
-    // Start is called before the first frame update
+    // iniciamos checando el enemigo  y se le asigna una barra determinada con sus valores
     void Start()
     {
         vidaEnemigo = GetComponentInParent<CEnemigo>();
@@ -19,7 +19,7 @@ public class Barras : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // actualizando constantemente checamos el status de la barra de "vida" y "magia" 
     void Update()
     {
         barras[0].value = vidaEnemigo.vida;
@@ -29,6 +29,7 @@ public class Barras : MonoBehaviour
         }
     }
 
+    // usamos corrutinas para mandar a llamar a este procedimiento cada que se cumpla una instancia específica 
     IEnumerator asignarvida()
     {
         yield return new WaitForSeconds(1);

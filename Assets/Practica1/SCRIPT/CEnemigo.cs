@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CEnemigo : MonoBehaviour
+public class CEnemigo : Agente
 {
     public string Id;
     public string nombre;
     public int vida;
     public int magia;
     EnemigoB enemigoB;
+    Animator animMomia;
 
+    // mandamos llamar al objeto enemigo de la baase de datos de enemigos por su ID para así poderlo crear
     void Start()
     {
         enemigoB = FindObjectOfType<EnemigoB>();
         BusquedaEnemigo(Id);
+
+        animMomia = GetComponent<Animator>();
     }
 
     private void BusquedaEnemigo(string id )
@@ -28,4 +32,12 @@ public class CEnemigo : MonoBehaviour
             }
         }
     }
+
+    private void Update()
+    {
+        ConfigurarDestino(destino);
+
+        animMomia.SetFloat("velocidad", velocidad);
+    }
+        
 }

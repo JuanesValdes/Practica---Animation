@@ -16,7 +16,7 @@ public class Movimiento : MonoBehaviour
     float rotationSpeed = 2f;
     Quaternion targetModelRotation;
 
-    // Start is called before the first frame update
+    // definimos el status inicial de los valores 
     void Start()
     {
         contador = 0;
@@ -47,6 +47,8 @@ public class Movimiento : MonoBehaviour
         Ataque(contador,"contador");
 
     } //Fin de Update;
+
+    //plazmamos el movimiento en este controlador basado en los axis horizontl y vertical
         void ControlMovimiento()
         { 
             float vertical = Input.GetAxis("Vertical");
